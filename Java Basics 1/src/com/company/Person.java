@@ -6,8 +6,8 @@ import java.util.*;
 public class Person {
 
     private int id;
-    int age;
-    private String name;
+    protected int age;
+    String name;
 
     public int getAge() {
         return age;
