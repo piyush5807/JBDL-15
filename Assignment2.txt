@@ -1,0 +1,118 @@
+import java.util.*;
+import java.util.function.BinaryOperator;
+import java.util.function.DoubleConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class Person {
+
+    private int age;
+    private String name;
+    private String country;
+
+    public Person(int age, String name, String country) {
+        this.age = age;
+        this.name = name;
+        this.country = country;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+
+    }
+
+    public static void main(String[] args) {
+
+        List<Person> people = Arrays.asList(
+                new Person(20, "John", "USA"),
+                new Person(35, "Sam", "Italy"),
+                new Person(15, "Jamie", "England"),
+                new Person(30, "Robert", "Italy"),
+                new Person(20, "James", "Ireland"),
+                new Person(25, "Peter", "USA"),
+                new Person(5, "Jessica", "Norway"),
+                new Person(40, "Roger", "Netherlands"),
+                new Person(50, "Jim", "USA")
+        );
+
+        // Ques 1 : Print the avg age of all the people
+        double averageAge = people.stream()
+                                  .mapToInt(person->person.getAge())
+                                  .average()
+                                  .getAsDouble();
+        System.out.println(averageAge);
+
+        // Ques 2 : Create a list of all the people who are either greater than 20 or
+        // contain any vowel in their name (uppercase or lowercase)
+        Pattern pattern = Pattern.compile("[AEIOUaeiou]");
+        List<Person> myList = people.stream()
+                                    .filter(person -> (person.age > 20 || pattern.matcher(person.name).find()))
+                                    .collect(Collectors.toList());
+        System.out.println(myList);
+
+        // Ques 3. Create a list of people, sorted in the ascending order on
+        // the basis of age, if age is same then sort in descending order of name
+        List<Person> reqList = people.stream()
+                                    .sorted(Comparator.comparing(Person::getAge).thenComparing(Person::getName,Comparator.reverseOrder()))
+                                    .collect(Collectors.toList());
+        System.out.println(reqList);
+
+        // Ques 4 : Create a map from this people list where the key is country name and value is count which
+        // means a map will tell how many people live in a particular country
+        Map<String, Long> countByCountry = people.stream().collect(Collectors.groupingBy(Person::getCountry,Collectors.counting()));
+        System.out.println(countByCountry);
+
+        // Ques 5 : Create a map which stores avg age of people per country
+        // (key should be country and value should be average age i.e, double)
+        Map<String, Double> avgAgePerCountry = people.stream()
+                                          .collect(Collectors.groupingBy(p->p.getCountry(), Collectors.averagingDouble(Person::getAge)));
+
+        System.out.println(avgAgePerCountry);
+
+        // Ques 6 : Print the oldest person in every country
+        Map<String, Person> oldestPerson = people.stream()
+                                                 .collect(Collectors.toMap(Person::getCountry, Function.identity(),
+                                                 BinaryOperator.maxBy(Comparator.comparing(Person::getAge))));
+        System.out.println(oldestPerson);
+
+
+        // Ques 7 : Print the country with most people
+        Map<String, Long> mp = people.stream().collect(Collectors.groupingBy(Person::getCountry,Collectors.counting()));
+        String countryWithMostPeople = Collections.max(mp.entrySet(), Map.Entry.comparingByValue()).getKey();
+        System.out.println(countryWithMostPeople);
+
+        // Ques 8 : Create a list of 20 random integers in range 0 - 1000 using Java 8 streams
+        Random random = new Random();
+        List<Object> numbers =  new Random().ints(0,1000).limit(20).boxed().collect(Collectors.toList());
+        System.out.println(numbers);
+    }
+}
