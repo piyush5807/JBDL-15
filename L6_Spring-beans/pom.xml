@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.2</version>
+		<version>2.5.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.example.gfg</groupId>
-	<artifactId>rest-apis</artifactId>
+	<groupId>com.example.gfg</groupId>
+	<artifactId>spring-beans</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rest-apis</name>
+	<name>spring-beans</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -20,13 +20,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<version>2.4.2</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -35,28 +34,6 @@
 			<version>1.18.16</version>
 		</dependency>
 
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-undertow</artifactId>-->
-<!--			<version>2.4.2</version>-->
-<!--		</dependency>-->
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jetty</artifactId>
-			<version>2.4.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-csv</artifactId>
-			<version>1.4</version>
-		</dependency>
 	</dependencies>
 
 	<build>
