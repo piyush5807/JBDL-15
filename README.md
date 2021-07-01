@@ -2,6 +2,12 @@
 
 Doubts - https://forms.gle/cZXSKrBGMdvqZ8aM8
 
+Assignments -
+1. Maven - https://forms.gle/cLnHwa2Si1W1AoMr8
+2. Spring web - https://forms.gle/ywEBjpS3VjfusVC7A
+3. Spring Beans - https://forms.gle/pCGYE146kTqATDyp7
+4. Spring Data - https://forms.gle/UiHKD24kvTa1EWti7
+
 Java
 
 1. Download - https://www.oracle.com/in/java/technologies/javase-downloads.html
