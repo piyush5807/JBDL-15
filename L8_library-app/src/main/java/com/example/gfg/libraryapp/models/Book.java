@@ -1,5 +1,6 @@
 package com.example.gfg.libraryapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -31,6 +32,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnoreProperties("books")
     private Author author;
 
     @CreationTimestamp

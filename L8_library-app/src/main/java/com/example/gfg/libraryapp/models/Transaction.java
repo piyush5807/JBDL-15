@@ -18,6 +18,9 @@ public class Transaction { // transaction table
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    // This is intended only for the external user querying part
+    private String transactionId;
+
     @ManyToOne
     @JoinColumn
     private Book book;   // book_<primary_key>
@@ -26,12 +29,14 @@ public class Transaction { // transaction table
     @JoinColumn
     private Student my_student;
 
+    @Enumerated(value = EnumType.STRING)
+    private TransactionStatus transactionStatus;
 
     @Enumerated(value = EnumType.STRING)
     private TransactionType transactionType;
 
     @CreationTimestamp
-    private Date transactionTime;
+    private Date transactTime;
 
     private int fine;
     private String remarks;

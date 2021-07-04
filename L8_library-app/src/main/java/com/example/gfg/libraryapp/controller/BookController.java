@@ -16,19 +16,19 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-//    @GetMapping("/book/{id}")
-//    public Book getBook(@PathVariable("id") int id){
-//        return bookService.getStudent(id);
-//    }
-//
-//    @GetMapping("/book/all")
-//    public List<Book> getBooks(){
-//        return bookService.getStudents();
-//    }
-//
-//    @PostMapping("/book")
-//    public void createBook(@RequestBody BookCreateRequest bookCreateRequest){
-//        bookService.createStudent(studentCreateRequest);
-//    }
+    @GetMapping("/book/{id}")
+    public Book getBook(@PathVariable("id") int id){
+        return bookService.getBook(id);
+    }
+
+    @GetMapping("/book/all")
+    public List<Book> getBooks(){
+        return bookService.getBooks();
+    }
+
+    @PostMapping("/book")
+    public void createBook(@RequestBody BookCreateRequest bookCreateRequest){
+        bookService.createBookWithAuthorDetails(bookCreateRequest);
+    }
 
 }
