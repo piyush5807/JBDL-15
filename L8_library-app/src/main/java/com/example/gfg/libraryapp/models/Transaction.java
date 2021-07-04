@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Transaction {
+public class Transaction { // transaction table
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

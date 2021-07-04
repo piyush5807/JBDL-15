@@ -23,6 +23,8 @@ public class Student {
     private String email;
     private int age;
 
+    private String name;
+
     // first part of annotation corresponds to the class in which we are writing
     // second part corresponds to the object on top of which we are writing this annotation
 
