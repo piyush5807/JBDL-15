@@ -6,19 +6,15 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Properties;
 
 @Configuration
-public class WalletConfig {
+// TODO: Extend from WebSecurityConfigureAdapter
+public class TransactionConfig {
 
     @Bean // Not necessary
     Properties getKafkaProps(){
@@ -63,4 +59,15 @@ public class WalletConfig {
         concurrentKafkaListenerContainerFactory.setConsumerFactory(getConsumerFactory());
         return concurrentKafkaListenerContainerFactory;
     }
+
+    @Bean
+    RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
+
+    //TODO:
+
+    // Authentication Bean
+    // Authorization Bean
+    // Password Encoder Bean
 }

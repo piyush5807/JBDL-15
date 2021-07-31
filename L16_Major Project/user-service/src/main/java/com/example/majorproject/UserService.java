@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserService {
 
@@ -43,6 +45,9 @@ public class UserService {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("userId", user.getUserId());
         jsonObject.put("amount", AMOUNT);
+        jsonObject.put("auditId", UUID.randomUUID().toString());
         kafkaTemplate.send(USER_CREATE_TOPIC, objectMapper.writeValueAsString(jsonObject));
+
+        // make an entry in kafka_audit_log // time + service name
     }
 }
